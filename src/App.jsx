@@ -1,6 +1,6 @@
-import { HomePage } from "./pages/HomePage"
+import { HomePage } from "./pages/HomePage";
 
-function App() {
+export const  App = () => {
   return (
     <>
       <HomePage />

@@ -1,0 +1,20 @@
+.productListContainer{
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 5%;
+    gap: 1rem;
+}
+@media (max-width: 600px){
+    .productListContainer{
+        overflow: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        position: relative;
+    }
+}

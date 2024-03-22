@@ -1,0 +1,33 @@
+.cardList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.cardListContent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.nameValroContainer{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    gap:1rem ;
+    margin-left: 2rem;
+}
+.nameItem{
+    font-weight: 800;
+}
+.valorCard{
+    color: var(--color-primary);
+    font-weight: bold;
+}
+.imgCard{
+    background-color: var(--color-gray-100);
+    width: 3.4375rem;
+    height: 3.3438rem;
+    border-radius: 10px;
+}

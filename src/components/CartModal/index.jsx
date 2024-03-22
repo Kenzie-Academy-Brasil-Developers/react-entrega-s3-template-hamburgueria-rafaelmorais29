@@ -1,33 +1,43 @@
 import { MdClose } from "react-icons/md";
 import { CartItemCard } from "./CartItemCard";
+import style from "../CartModal/style.module.scss";
 
-export const CartModal = ({ cartList }) => {
+
+
+export const CartModal = ({ cartList,setOpen,setCartList }) => {
    const total = cartList.reduce((prevValue, product) => {
       return prevValue + product.price;
    }, 0);
 
+   const ClearCarrinho = () =>{ 
+      localStorage.setItem("carrinho", JSON.stringify([]));
+      setCartList([])
+  }
+
    return (
-      <div role="dialog">
-         <div>
-            <h2>Carrinho de compras</h2>
-            <button aria-label="close" title="Fechar">
-               <MdClose size={21} />
-            </button>
-         </div>
-         <div>
-            <ul>
-               {cartList.map((product) => (
-                  <CartItemCard key={product.id} product={product} />
-               ))}
-            </ul>
-         </div>
-         <div>
-            <div>
-               <span>Total</span>
-               <span>{total.toLocaleString('pt-BR', { style: "currency", currency: "BRL"})}</span>
+      <main className={style.containerModal} role="dialog">
+         <div className={style.contentModal}>
+            <div className={style.contentHeader} >
+               <h2 className={style.carrinhoHeader}>Carrinho de compras</h2>
+               <button className={style.carrinhoButton} onClick={() => setOpen(false)} aria-label="close" title="Fechar">
+                  x
+               </button>
             </div>
-            <button>Remover todos</button>
+            <div className={style.listContent}>
+               <ul className={style.listcontainer}>
+                  {cartList.map((product) => (
+                     <CartItemCard setCartList={setCartList} cartList={cartList} key={product.id} product={product} />
+                  ))}
+               </ul>
+            </div>
+            <div className={style.somaConatiner}>
+               <div className={style.somaContent}>
+                  <span className={style.somaTotal}>Total</span>
+                  <span className={style.somaValor}>{total.toLocaleString('pt-BR', { style: "currency", currency: "BRL"})}</span>
+               </div>
+               <button className={style.removeButton} onClick={() => ClearCarrinho()}>Remover todos</button>
+            </div>
          </div>
-      </div>
+      </main>
    );
 };
